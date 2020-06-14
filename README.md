@@ -146,6 +146,14 @@
  * **The *`ANDROID_DEV_DRIVE`* variable** is a folder used for Android ROMs and kernels.
    <br />
    You do not *need* it, but a few functions rely on it to ease things.
+   
+ * **Experimental bash script to do it all at once:**
+   ```bash
+   cd $HOME
+   git clone https://github.com/DroidFreak32/advanced_development_shell_tools -b master;
+   export ANDROID_DEV_DRIVE="$HOME/advanced_development_shell_tools";
+   echo 'alias adrian="source $HOME/advanced_development_shell_tools/advanced_development_shell_tools.rc"' >> $HOME/.bash_aliases
+   ```
 <!-- /List -->
 <!-- /Indent -->
 
