@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Copyright 2015-2019 Adrian DC
+# Copyright 2015-2020 Adrian DC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,9 +19,9 @@
 function meganzreload()
 {
   # Usage
-  if [ ! -f "${ADVANCED_DEVELOPMENT_SHELL_TOOLS_WORKSPACE:-${HOME}}/.megarc" ] || [ ! -z "${1}" ]; then
+  if [ ! -f "${ADVANCED_DEVELOPMENT_SHELL_TOOLS_WORKSPACE:-${HOME}}/.megarc" ]; then
     echo '';
-    echo ' Usage: meganzreload (Reload Mega.nz account and keys)';
+    echo ' Usage: meganzreload [keep_service] (Reload Mega.nz account and keys)';
     echo "  ${ADVANCED_DEVELOPMENT_SHELL_TOOLS_WORKSPACE:-${HOME}}/.megarc needs to following content:";
     echo '';
     echo '---';
@@ -61,6 +61,11 @@ function meganzreload()
   # Reload Mega account
   echo -en ' \e[1;33mmeganzreload:\e[0m ';
   mega-reload;
+
+  # Stop mega-cmd background server
+  if [ -z "${1}" ]; then
+    killall -9 -w mega-cmd-server 2>/dev/null;
+  fi;
 
   # Stop mega-cmd server
   kill -9 "${proc_id}" 2>/dev/null;

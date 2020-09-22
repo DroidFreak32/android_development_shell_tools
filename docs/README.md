@@ -3,17 +3,17 @@
 <!-- /Center -->
 
 
- * Created by [Adrian DC](https://github.com/AdrianDC) - 2015-2019
+ * Created by [Adrian DC](https://github.com/AdrianDC) - 2015-2020
 
- * Project description : [About...](project.md)
+ * Project description : [About](project.md)
    <br />
-   Regularly used functions : [Previews...](previews.md)
+   Regularly used functions : [Previews](previews.md)
    <br />
-   Some commands examples : [Samples...](samples.md)
+   Some commands examples : [Samples](samples.md)
    <br />
-   Project user functions : [Handlers...](shtools.md)
+   Project user functions : [Handlers](shtools.md)
    <br />
-   XDA-Developers forum : [Thread...](http://forum.xda-developers.com/-/-/-t3622382)
+   XDA-Developers forum : [Thread](http://forum.xda-developers.com/-/-/-t3622382)
 
  * This project is meant to provide multiple advanced functions and shortcuts to **ease Android, Git and Linux developments**
 
@@ -26,26 +26,26 @@
 #### See how to install and update the project
 </summary>
 
- * **Clone the project locally with git**
+ * **Clone the project locally with git:**
    ```Shell
-   git clone https://github.com/AdrianDC/advanced_development_shell_tools -b master;
+   git clone https://github.com/AdrianDC/advanced_development_shell_tools -b master
    ```
- * **Load the project in a Shell terminal**
+ * **Load the project in a Shell terminal:**
    ```Shell
-   source /path/to/folder/advanced_development_shell_tools.rc;
+   source /path/to/folder/advanced_development_shell_tools.rc
    ```
- * **Permanently load the project**
+ * **Permanently load the project:**
    <br />
    Open *`~/.bashrc`*, adapt and add:
    ```Shell
-   export ANDROID_DEV_DRIVE='/media/../AndroidDev';
-   source '/.../advanced_development_shell_tools.rc';
+   export ANDROID_DEV_DRIVE='/media/../AndroidDev'
+   source '/.../advanced_development_shell_tools.rc'
    ```
    **`ANDROID_DEV_DRIVE`**: Optional folder for Android functions.
    <br />
- * **Synchronize new project additions**
+ * **Synchronize new project additions:**
    ```Shell
-   shtoolssync;
+   shtoolssync
    ```
 </details>
 
@@ -221,15 +221,22 @@ source <(curl -Ls1 https://github.com/AdrianDC/advanced_development_shell_tools/
   * **adbkcln** *[file_kmsg]* [*<b>\[Kernel&nbsp;logs&nbsp;output&nbsp;cleaner\]&nbsp;</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/android_adb/logs.rc)
   * **adbstcln** *[file_adb.log]* [*<b>\[strace&nbsp;output&nbsp;cleaner\]&nbsp;</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/android_adb/logs.rc)
   * **adblc** *adb logcat -c; adbl* [*<b>(Inline)</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/android_adb/logs.rc)
-  * **adbk** *echo -n '' &gt; kmsg; adbsu cat /proc/kmsg \| tee -a kmsg* [*<b>(Inline)</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/android_adb/logs.rc)
-  * **adbdm** *echo -n '' &gt; dmesg; adbsu dmesg \| tee -a dmesg* [*<b>(Inline)</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/android_adb/logs.rc)
-  * **adbkd** *echo -n '' &gt; kmsg; adbsu cat /proc/kmsg \| tee -a kmsg* [*<b>(Inline)</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/android_adb/logs.rc)
-  * **adbkl** *cls; echo -n '' &gt; last_kmsg; adbsu cat /proc/last_kmsg \| tee -a last_kmsg* [*<b>(Inline)</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/android_adb/logs.rc)
-  * **adbpl** *cls; echo -n '' &gt; last_kmsg; adbsu cat /sys/fs/pstore/console-ramoops \| tee -a last_kmsg* [*<b>(Inline)</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/android_adb/logs.rc)
-  * **adbrl** *cls; echo -n '' &gt; recovery_log; adbsu cat /tmp/recovery.log \| tee -a recovery_log* [*<b>(Inline)</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/android_adb/logs.rc)
+  * **adbk** *echo -n '' &gt; kmsg; adbready; adbsu cat /proc/kmsg \| tee -a kmsg* [*<b>(Inline)</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/android_adb/logs.rc)
+  * **adbdm** *echo -n '' &gt; dmesg; adbready; adbsu dmesg \| tee -a dmesg* [*<b>(Inline)</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/android_adb/logs.rc)
+  * **adbkd** *echo -n '' &gt; kmsg; adbready; adbsu cat /proc/kmsg \| tee -a kmsg* [*<b>(Inline)</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/android_adb/logs.rc)
+  * **adbkl** *cls; echo -n '' &gt; last_kmsg; adbready; adbsu cat /proc/last_kmsg \| tee -a last_kmsg* [*<b>(Inline)</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/android_adb/logs.rc)
+  * **adbpl** *cls; echo -n '' &gt; last_kmsg; adbready; adbsu cat /sys/fs/pstore/console-ramoops \| tee -a last_kmsg* [*<b>(Inline)</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/android_adb/logs.rc)
+  * **adbrl** *cls; echo -n '' &gt; recovery_log; adbready; adbsu cat /tmp/recovery.log \| tee -a recovery_log* [*<b>(Inline)</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/android_adb/logs.rc)
   * **adbdumpsensors** *adbsu dumpsys sensorservice* [*<b>(Inline)</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/android_adb/logs.rc)
   * **adbtrampoline** *adbsu 'dmesg \| grep -i trampoline'* [*<b>(Inline)</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/android_adb/logs.rc)
   * **adbple** [*<b>\[ADB&nbsp;Ramoops&nbsp;Compressed&nbsp;Logger\]&nbsp;</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/android_adb/logs.rc)
+
+---
+> ### <span class="group_label">[sources/android_adb/make.rc](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/android_adb/make.rc)</span> ###
+>
+  * **makei** *[module]* [*<b>\[Make&nbsp;Android&nbsp;modules&nbsp;and&nbsp;install&nbsp;them\]&nbsp;</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/android_adb/make.rc)
+  * **makel** *[module]* [*<b>\[Make&nbsp;Android&nbsp;modules&nbsp;and&nbsp;list&nbsp;them\]&nbsp;</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/android_adb/make.rc)
+  * **makez** *[module]* [*<b>\[Make&nbsp;Android&nbsp;modules&nbsp;and&nbsp;zip&nbsp;them\]&nbsp;</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/android_adb/make.rc)
 
 ---
 > ### <span class="group_label">[sources/android_adb/multirom.rc](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/android_adb/multirom.rc)</span> ###
@@ -420,6 +427,7 @@ source <(curl -Ls1 https://github.com/AdrianDC/advanced_development_shell_tools/
   * **romautorelease** *&lt;device_name&gt; &lt;rom_tag&gt; [nowipe,j1/j2]* [*<b>\[Advanced&nbsp;automated&nbsp;ROM&nbsp;builder\]&nbsp;</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/android_release/builders.rc)
   * **autorelease** [*<b>\[Helper&nbsp;menu&nbsp;access&nbsp;to&nbsp;autorelease*&nbsp;functions\]&nbsp;</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/android_release/builders.rc)
   * **romlogs** *&lt;device&gt; &lt;rom&gt; [logs_count_default_200]* [*<b>\[View&nbsp;ROMs&nbsp;build&nbsp;logs&nbsp;from&nbsp;romautorelease\]&nbsp;</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/android_release/builders.rc)
+  * **autoprepare** [*<b>\[Development&nbsp;automated&nbsp;ROM&nbsp;preparation\]&nbsp;</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/android_release/builders.rc)
   * **autobuild** *&lt;device&gt; [bool_nocleanram]* [*<b>\[Development&nbsp;automated&nbsp;ROM&nbsp;builder\]&nbsp;</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/android_release/builders.rc)
 
 ---
@@ -491,7 +499,7 @@ source <(curl -Ls1 https://github.com/AdrianDC/advanced_development_shell_tools/
 source <(curl -Ls1 https://github.com/AdrianDC/advanced_development_shell_tools/raw/master/sources/android_repo/changes.rc)
   ```
 >  </div>
-  * **repochanges** *[&#8208;&#8208;local] ["filter_projects"]* [*<b>\[Detect&nbsp;all&nbsp;repo&nbsp;projects&nbsp;differences\]&nbsp;</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/android_repo/changes.rc)
+  * **repochanges** *[&#8208;&#8208;list/&#8208;&#8208;local] ["filter_projects"]* [*<b>\[Detect&nbsp;all&nbsp;repo&nbsp;projects&nbsp;differences\]&nbsp;</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/android_repo/changes.rc)
 
 ---
 > ### <span class="group_label">[sources/android_repo/cleaners.rc](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/android_repo/cleaners.rc)</span> ###
@@ -538,6 +546,7 @@ source <(curl -Ls1 https://github.com/AdrianDC/advanced_development_shell_tools/
   * **repos** *&lt;device_name&gt;* [*<b>\[Prepare&nbsp;Android&nbsp;device&nbsp;environment\]&nbsp;</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/android_repo/helpers.rc)
   * **reporoomserv** [*<b>\[Manifest&nbsp;and&nbsp;local_manifests&nbsp;editor\]&nbsp;</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/android_repo/helpers.rc)
   * **reposy** [*<b>\[Optimized&nbsp;relevant&nbsp;repo&nbsp;sync\]&nbsp;</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/android_repo/helpers.rc)
+  * **reposyr** [*<b>\[Optimized&nbsp;and&nbsp;rebased&nbsp;relevant&nbsp;repo&nbsp;sync\]&nbsp;</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/android_repo/helpers.rc)
   * **reposysafe** [*<b>\[Safeguarded&nbsp;repo&nbsp;projects&nbsp;sync\]&nbsp;</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/android_repo/helpers.rc)
   * **reposybranch** [*<b>\[Individual&nbsp;repo&nbsp;projects&nbsp;sync\]&nbsp;</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/android_repo/helpers.rc)
   * **repoprune** [*<b>\[Apply&nbsp;repo-wide&nbsp;prune&nbsp;cleanup\]&nbsp;</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/android_repo/helpers.rc)
@@ -1128,11 +1137,9 @@ source <(curl -Ls1 https://github.com/AdrianDC/advanced_development_shell_tools/
   * **pcinfo** : *inxi -Fxz* [*<b>(Alias)</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/host/linux.rc)
   * **cpioext** *&lt;cpio_file_to_extract&gt;* [*<b>\[Extract&nbsp;cpio&nbsp;file\]&nbsp;</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/host/linux.rc)
   * **videoresize** *&lt;video_file&gt;* [*<b>\[Resize&nbsp;video&nbsp;dimensions\]&nbsp;</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/host/linux.rc)
-  * **disableautomount** [*<b>\[Linux&nbsp;USB&nbsp;automount&nbsp;disabler\]&nbsp;</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/host/linux.rc)
   * **reownas** *[other_user_name]* [*<b>\[Reown&nbsp;current&nbsp;folder&nbsp;recursively\]&nbsp;</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/host/linux.rc)
   * **diffbin** *&lt;binary_left&gt; &lt;binary_right&gt; [first_n_lines]* [*<b>\[Compare&nbsp;binary&nbsp;files\]&nbsp;</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/host/linux.rc)
   * **drivespeedtest** *&lt;test_file_path&gt;* [*<b>\[Run&nbsp;drive&nbsp;write&nbsp;speed&nbsp;test\]&nbsp;</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/host/linux.rc)
-  * **mtpmountdisable** [*<b>\[Disable&nbsp;MTP&nbsp;automount\]&nbsp;</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/host/linux.rc)
   * **networkrestart** [*<b>\[Restart&nbsp;network&nbsp;manager\]&nbsp;</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/host/linux.rc)
   * **tmpclean** [*<b>\[Cleanup&nbsp;/tmp&nbsp;from&nbsp;old&nbsp;leftovers\]&nbsp;</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/host/linux.rc)
   * **isdone** : *notify-send "Process execution finished !"* [*<b>(Alias)</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/host/linux.rc)
@@ -1178,12 +1185,7 @@ source <(curl -Ls1 https://github.com/AdrianDC/advanced_development_shell_tools/
   ```
 >  </div>
   * **haste** *&lt;file&gt; or \| haste* [*<b>\[Share&nbsp;hastebin&nbsp;logs\]&nbsp;</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/host/tools.rc)
-  * **pbin** *&lt;file&gt; or \| pbin* [*<b>\[Share&nbsp;Pastebin&nbsp;logs\]&nbsp;</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/host/tools.rc)
-  * **pbinperm** : *PASTEBIN_EXPIRE=N pbin* [*<b>(Alias)</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/host/tools.rc)
-  * **dogbin** *&lt;file&gt; or \| dogbin* [*<b>\[Share&nbsp;dogbin&nbsp;logs\]&nbsp;</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/host/tools.rc)
   * **remotescript** *&lt;url&gt; [bool_automated]* [*<b>\[Remote&nbsp;script&nbsp;launcher&nbsp;with&nbsp;confirmations\]&nbsp;</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/host/tools.rc)
-  * **buildlock** *&lt;command...&gt;* [*<b>\[Mutex-locked&nbsp;command&nbsp;execution\]&nbsp;</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/host/tools.rc)
-  * **wip** *[commands to store]* [*<b>\[Work&nbsp;in&nbsp;progress&nbsp;commands&nbsp;to&nbsp;store&nbsp;and&nbsp;use\]&nbsp;</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/host/tools.rc)
 
 ---
 </details>
@@ -1270,39 +1272,9 @@ source <(curl -Ls1 https://github.com/AdrianDC/advanced_development_shell_tools/
 
 <details class='group_details'>
 <summary class="group_header">
-#### <span class="group_category">Extensions &bull; </span><span class="group_label">Build Wrappers</span> ####
-</summary>
-
-> ### <span class="group_label">[extensions/android_build/make.rc](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/android_build/make.rc)</span> ###
->
-  * **makei** : *adbi makes* [*<b>(Alias)</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/android_build/make.rc)
-  * **makel** : *adbil makes* [*<b>(Alias)</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/android_build/make.rc)
-  * **makez** *adbil makes "${@}"; packzippr* [*<b>(Inline)</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/android_build/make.rc)
-
----
-</details>
-
-<details class='group_details'>
-<summary class="group_header">
 #### <span class="group_category">Extensions &bull; </span><span class="group_label">Android ROM Helpers</span> ####
 </summary>
 
-> ### <span class="group_label">[extensions/android_rom/aicp.rc](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/android_rom/aicp.rc)</span> ###
->
-  * **gitcpaicp** [*<b>\[Automated&nbsp;upstream&nbsp;to&nbsp;AICP&nbsp;device&nbsp;merger\]&nbsp;</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/android_rom/aicp.rc)
-
----
-> ### <span class="group_label">[extensions/android_rom/aospcaf.rc](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/android_rom/aospcaf.rc)</span> ###
->
->  <div class='standalone-import'>
-  ```Shell
-source <(curl -Ls1 https://github.com/AdrianDC/advanced_development_shell_tools/raw/master/sources/android_rom/projects.rc)
-source <(curl -Ls1 https://github.com/AdrianDC/advanced_development_shell_tools/raw/master/extensions/android_rom/aospcaf.rc)
-  ```
->  </div>
-  * **aospcafpatcher** *[specific_paths]* [*<b>\[AOSP-CAF&nbsp;Patcher\]&nbsp;</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/android_rom/aospcaf.rc)
-
----
 > ### <span class="group_label">[extensions/android_rom/gerrit.rc](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/android_rom/gerrit.rc)</span> ###
 >
 >  <div class='standalone-import'>
@@ -1313,12 +1285,7 @@ source <(curl -Ls1 https://github.com/AdrianDC/advanced_development_shell_tools/
   ```
 >  </div>
   * **gitpr** : *gerritreview ssh://$(gerritusername)@review.lineageos.org:29418 LineageOS . for* [*<b>(Alias)</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/android_rom/gerrit.rc)
-  * **gitprh** : *gerritreview http://review.lineageos.org LineageOS . for* [*<b>(Alias)</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/android_rom/gerrit.rc)
-  * **gitpr14** : *gerritreview ssh://$(gerritusername)@review.lineageos.org:29418 LineageOS . for cm-14.1* [*<b>(Alias)</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/android_rom/gerrit.rc)
-  * **gitpr15** : *gerritreview ssh://$(gerritusername)@review.lineageos.org:29418 LineageOS . for lineage-15.1* [*<b>(Alias)</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/android_rom/gerrit.rc)
-  * **gitpr16** : *gerritreview ssh://$(gerritusername)@review.lineageos.org:29418 LineageOS . for lineage-16.0* [*<b>(Alias)</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/android_rom/gerrit.rc)
   * **gitpg** : *gerritreview ssh://$(gerritusername)@review.lineageos.org:29418 LineageOS . heads* [*<b>(Alias)</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/android_rom/gerrit.rc)
-  * **gitpgh** : *gerritreview http://review.lineageos.org LineageOS . heads* [*<b>(Alias)</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/android_rom/gerrit.rc)
   * **gitprg** : *gitpr; gitpg* [*<b>(Alias)</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/android_rom/gerrit.rc)
   * **gitprgy** : *echo -n "ynyn" \| gitpr; echo -n "yny" \| gitpg* [*<b>(Alias)</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/android_rom/gerrit.rc)
   * **gitpraosp** : *gerritreview https://android.googlesource.com aosp . for* [*<b>(Alias)</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/android_rom/gerrit.rc)
@@ -1326,20 +1293,10 @@ source <(curl -Ls1 https://github.com/AdrianDC/advanced_development_shell_tools/
   * **gitprdaosp** : *gerritreview https://android.googlesource.com aosp . drafts* [*<b>(Alias)</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/android_rom/gerrit.rc)
   * **gitprdaospma** : *gerritreview https://android.googlesource.com aosp . drafts master* [*<b>(Alias)</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/android_rom/gerrit.rc)
   * **gitpraicp** : *gerritreview ssh://$(gerritusername)@gerrit.aicp-rom.com:29418 AICP . for n7.1* [*<b>(Alias)</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/android_rom/gerrit.rc)
-  * **gitprhaicp** : *gerritreview http://gerrit.aicp-rom.com AICP . for n7.1* [*<b>(Alias)</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/android_rom/gerrit.rc)
   * **gitprdaicp** : *gerritreview ssh://$(gerritusername)@gerrit.aicp-rom.com:29418 AICP . drafts n7.1* [*<b>(Alias)</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/android_rom/gerrit.rc)
-  * **gitprdhaicp** : *gerritreview http://gerrit.aicp-rom.com AICP . drafts n7.1* [*<b>(Alias)</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/android_rom/gerrit.rc)
   * **gitpgaicp** : *gerritreview ssh://$(gerritusername)@gerrit.aicp-rom.com:29418 AICP . heads n7.1* [*<b>(Alias)</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/android_rom/gerrit.rc)
-  * **gitpghaicp** : *gerritreview http://gerrit.aicp-rom.com AICP . heads n7.1* [*<b>(Alias)</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/android_rom/gerrit.rc)
-  * **gitprgaicp** : *gitpraicp; gitpgaicp* [*<b>(Alias)</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/android_rom/gerrit.rc)
-  * **gitprghaicp** : *gitprhaicp; gitpghaicp* [*<b>(Alias)</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/android_rom/gerrit.rc)
   * **gitprtwrp** : *gerritreview ssh://$(gerritusername)@gerrit.twrp.me:29418 . TeamWin for android-6.0* [*<b>(Alias)</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/android_rom/gerrit.rc)
   * **gitprdtwrp** : *gerritreview ssh://$(gerritusername)@gerrit.twrp.me:29418 . TeamWin drafts android-6.0* [*<b>(Alias)</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/android_rom/gerrit.rc)
-
----
-> ### <span class="group_label">[extensions/android_rom/lineageoms.rc](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/android_rom/lineageoms.rc)</span> ###
->
-  * **lineageomspatcher** [*<b>\[LineageOMS&nbsp;Patcher\]&nbsp;</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/android_rom/lineageoms.rc)
 
 ---
 > ### <span class="group_label">[extensions/android_rom/lineageos.rc](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/android_rom/lineageos.rc)</span> ###
@@ -1397,7 +1354,6 @@ source <(curl -Ls1 https://github.com/AdrianDC/advanced_development_shell_tools/
 >
   * **cleanram** [*<b>\[RAM&nbsp;caches&nbsp;cleanup\]&nbsp;</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/linux/cleaners.rc)
   * **cleanrambuild** [*<b>\[RAM&nbsp;caches&nbsp;cleanup\]&nbsp;</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/linux/cleaners.rc)
-  * **cleanramkill** *[bool_cleanram]* [*<b>\[Complete&nbsp;RAM&nbsp;cleanup&nbsp;including&nbsp;"java"\]&nbsp;</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/linux/cleaners.rc)
 
 ---
 > ### <span class="group_label">[extensions/linux/rpm.rc](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/linux/rpm.rc)</span> ###
@@ -1426,7 +1382,7 @@ source <(curl -Ls1 https://github.com/AdrianDC/advanced_development_shell_tools/
 ---
 > ### <span class="group_label">[extensions/mega/reload.rc](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/mega/reload.rc)</span> ###
 >
-  * **meganzreload** [*<b>\[Reload&nbsp;Mega.nz&nbsp;account&nbsp;and&nbsp;keys\]&nbsp;</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/mega/reload.rc)
+  * **meganzreload** *[keep_service]* [*<b>\[Reload&nbsp;Mega.nz&nbsp;account&nbsp;and&nbsp;keys\]&nbsp;</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/mega/reload.rc)
 
 ---
 </details>
@@ -1454,10 +1410,8 @@ source <(curl -Ls1 https://github.com/AdrianDC/advanced_development_shell_tools/
 ---
 > ### <span class="group_label">[extensions/sony_msm8960/autorelease.rc](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/sony_msm8960/autorelease.rc)</span> ###
 >
-  * **autoreleaseaospsony8960o** *[devices]* [*<b>\[Automated&nbsp;AOSP&nbsp;Oreo&nbsp;Sony&nbsp;8960&nbsp;releaser\]&nbsp;</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/sony_msm8960/autorelease.rc)
   * **autoreleaseaospsony8960p** *[devices]* [*<b>\[Automated&nbsp;AOSP&nbsp;Oreo&nbsp;Sony&nbsp;8960&nbsp;releaser\]&nbsp;</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/sony_msm8960/autorelease.rc)
-  * **autoreleaselineagesony8960o** *[devices]* [*<b>\[Automated&nbsp;LineageOS&nbsp;Oreo&nbsp;Sony&nbsp;8960&nbsp;releaser\]&nbsp;</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/sony_msm8960/autorelease.rc)
-  * **autoreleaselineagesony8960p** *[devices]* [*<b>\[Automated&nbsp;LineageOS&nbsp;Pie&nbsp;Sony&nbsp;8960&nbsp;releaser\]&nbsp;</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/sony_msm8960/autorelease.rc)
+  * **autoreleaselineagesony8960q** *[devices]* [*<b>\[Automated&nbsp;LineageOS&nbsp;Q&nbsp;Sony&nbsp;8960&nbsp;releaser\]&nbsp;</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/sony_msm8960/autorelease.rc)
 
 ---
 > ### <span class="group_label">[extensions/sony_msm8960/lineageos.rc](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/sony_msm8960/lineageos.rc)</span> ###
@@ -1476,14 +1430,6 @@ source <(curl -Ls1 https://github.com/AdrianDC/advanced_development_shell_tools/
 >
   * **autoreleasemultiromsony8960** *[devices]* [*<b>\[Automated&nbsp;MultiROM&nbsp;Sony&nbsp;8960&nbsp;releaser\]&nbsp;</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/sony_msm8960/release.rc)
   * **autoreleasetwrpsony8960** *[devices]* [*<b>\[Automated&nbsp;TWRP&nbsp;Sony&nbsp;8960&nbsp;releaser\]&nbsp;</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/sony_msm8960/release.rc)
-
----
-> ### <span class="group_label">[extensions/sony_msm8960/shortcuts.rc](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/sony_msm8960/shortcuts.rc)</span> ###
->
-  * **cdspker** *cd "$(pwd \| sed 's/(.*)Android([^/]*/[^/]*).*/1Android2/kernel/sony/msm8960t/g')"* [*<b>(Inline)</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/sony_msm8960/shortcuts.rc)
-  * **cdblueker** *cd "$(pwd \| sed 's/(.*)Android([^/]*/[^/]*).*/1Android2/kernel/sony/msm8x60/g')"* [*<b>(Inline)</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/sony_msm8960/shortcuts.rc)
-  * **cdvendsony** *cd "$(pwd \| sed 's/(.*)Android([^/]*/[^/]*).*/1Android2/vendor/sony/g')"* [*<b>(Inline)</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/sony_msm8960/shortcuts.rc)
-  * **meldblue** *pathscompare "./${1}" "../blue-common/${1}"* [*<b>(Inline)</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/sony_msm8960/shortcuts.rc)
 
 ---
 </details>
@@ -1556,7 +1502,6 @@ source <(curl -Ls1 https://github.com/AdrianDC/advanced_development_shell_tools/
 ---
 > ### <span class="group_label">[extensions/sony_msm8996/shortcuts.rc](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/sony_msm8996/shortcuts.rc)</span> ###
 >
-  * **sonysodpkernelrebase** : *git fetch https://github.com/sonyxperiadev/kernel aosp/LA.UM.5.5.r1; git rebase FETCH_HEAD; gitpa* [*<b>(Alias)</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/sony_msm8996/shortcuts.rc)
   * **doradefconf** : *makedefconf msm-perf dora common* [*<b>(Alias)</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/sony_msm8996/shortcuts.rc)
   * **dorazipkernel** : *kernelinjectorzip dora arch/arm64/boot/Image.gz-dtb .* [*<b>(Alias)</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/sony_msm8996/shortcuts.rc)
   * **kaguradefconf** : *makedefconf msm-perf kagura common* [*<b>(Alias)</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/sony_msm8996/shortcuts.rc)
@@ -1597,23 +1542,6 @@ source <(curl -Ls1 https://github.com/AdrianDC/advanced_development_shell_tools/
 
 <details class='group_details'>
 <summary class="group_header">
-#### <span class="group_category">Scripts &bull; </span><span class="group_label">Android Repository</span> ####
-</summary>
-
-> ### <span class="group_label">[scripts/android_repo/install.sh](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/scripts/android_repo/install.sh)</span> ###
->
->  <div class='standalone-import'>
-  ```Shell
-source <(curl -Ls1 https://github.com/AdrianDC/advanced_development_shell_tools/raw/master/scripts/android_repo/install.sh)
-  ```
->  </div>
-  * [**\./install.sh** *<b>\[Automated&nbsp;install&nbsp;of&nbsp;Android&nbsp;repo&nbsp;requirements\]&nbsp;</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/scripts/android_repo/install.sh)
-
----
-</details>
-
-<details class='group_details'>
-<summary class="group_header">
 #### <span class="group_category">Scripts &bull; </span><span class="group_label">Linux Host</span> ####
 </summary>
 
@@ -1635,16 +1563,6 @@ source <(curl -Ls1 https://github.com/AdrianDC/advanced_development_shell_tools/
   ```
 >  </div>
   * [**\./cleanrambuild.sh** *<b>\[Build&nbsp;RAM&nbsp;processes&nbsp;cleanup\]&nbsp;</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/scripts/linux/cleanrambuild.sh)
-
----
-> ### <span class="group_label">[scripts/linux/reboot.sh](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/scripts/linux/reboot.sh)</span> ###
->
->  <div class='standalone-import'>
-  ```Shell
-source <(curl -Ls1 https://github.com/AdrianDC/advanced_development_shell_tools/raw/master/scripts/linux/reboot.sh)
-  ```
->  </div>
-  * [**\./reboot.sh** *<b>\[Crontab&nbsp;script&nbsp;to&nbsp;reboot&nbsp;when&nbsp;not&nbsp;building\]&nbsp;</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/scripts/linux/reboot.sh)
 
 ---
 </details>

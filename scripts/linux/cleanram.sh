@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Copyright 2015-2019 Adrian DC
+# Copyright 2015-2020 Adrian DC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -44,7 +44,7 @@ OLDIFS=${IFS};
 IFS=$'\n';
 for command in ${commands}; do
   echo "  ${command}";
-  sudo sh -c "timeout -k 5 5 bash -c '${command}'";
+  sudo sh -c "timeout -k 10 10 bash -c '${command}'";
 done;
 IFS=${OLDIFS};
 

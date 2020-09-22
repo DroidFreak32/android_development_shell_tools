@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Copyright 2015-2019 Adrian DC
+# Copyright 2015-2020 Adrian DC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -102,9 +102,9 @@ function gck()
 
   # Grep through files
   tmp_list=$(mktemp);
-  findfilteredprojectfiles . \( -name 'Kconfig' -o -name 'Makefile' \) > "${tmp_list}";
+  findfilteredprojectfiles . \( -name 'Kconfig*' \) > "${tmp_list}";
   while read -r file; do
-    found=$(stringsgetall "${file}" | grep -ai --color=always -- "${*}");
+    found=$(stringsgetall "${file}" | grep -ai --color=always -- "${*#CONFIG_}");
     if [ ! -z "${found}" ]; then
       echo -e "\e[1;31m${file} :\e[0m ${found}";
     fi;

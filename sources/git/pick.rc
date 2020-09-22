@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Copyright 2015-2019 Adrian DC
+# Copyright 2015-2020 Adrian DC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -31,7 +31,7 @@ function gitcpu()
 
   # Variables
   local link=${1};
-  local branch=${2:-lineage-16.0};
+  local branch=${2:-lineage-17.1};
   local project;
   local commit;
 

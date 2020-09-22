@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Copyright 2015-2019 Adrian DC
+# Copyright 2015-2020 Adrian DC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -106,7 +106,7 @@ function adbif()
 
   # Find installed files
   repo_top=$(gettop 2> /dev/null);
-  tmp_installs=$(grep -aoh '[^ ]*target/product/[^\/]*/system[^ ]*' "${tmp_file}" \
+  tmp_installs=$(grep -aoh '[^ ]*target/product/[^\/]*/system[^ ]*\|[^ ]*target/product/[^\/]*/root/[^ ]*' "${tmp_file}" \
                | sort \
                | uniq);
 
@@ -114,7 +114,8 @@ function adbif()
   for file_path in ${tmp_installs[*]}; do
     if [[ ! "${file_path}" == *'/system.img' ]] &&
         [[ "${file_path}" == *'/system'* ]] &&
-        [[ ! "${file_path}" == *'/NOTICE_FILES'* ]]; then
+        [[ ! "${file_path}" == *'/NOTICE_FILES'* ]] ||
+        [[ "${file_path}" == *'/root/'* ]]; then
       file_path=$(echo -n "${file_path}" | tail -1 \
                 | sed 's/\x1B\[[0-9;]*[JKmsu]//g');
       if [ ! -f "${file_path}" ]; then
@@ -127,6 +128,9 @@ function adbif()
     fi;
   done;
 
+  # Prepare public PACKAGES_RESULTS
+  export PACKAGES_RESULTS="${packages_res}";
+
   # Push installed files
   if [ "${ret}" -eq 0 ]; then
     adbpf "${packages_arr[@]}";
@@ -138,9 +142,6 @@ function adbif()
     echo -e ' \e[1;31m-----------------------------------------------------------------------------\e[0m';
     rm -f "${packages_arr[@]}";
   fi;
-
-  # Prepare public PACKAGES_RESULTS
-  export PACKAGES_RESULTS="${packages_res}";
 
   # End of process
   rm -f "${tmp_file}";
@@ -172,8 +173,11 @@ function adbil()
   "${@}" | tee "${tmp_file}";
   ret=${PIPESTATUS[0]};
 
+  # Header
+  echo '';
+
   # Find installed files
-  tmp_installs=$(grep -aoh '[^ ]*target/product/[^\/]*/system[^ ]*' "${tmp_file}" \
+  tmp_installs=$(grep -aoh '[^ ]*target/product/[^\/]*/system[^ ]*\|[^ ]*target/product/[^\/]*/root/[^ ]*' "${tmp_file}" \
                | sort \
                | uniq);
 
@@ -181,7 +185,8 @@ function adbil()
   for file_path in ${tmp_installs[*]}; do
     if [[ ! "${file_path}" == *'/system.img' ]] &&
         [[ "${file_path}" == *'/system'* ]] &&
-        [[ ! "${file_path}" == *'/NOTICE_FILES'* ]]; then
+        [[ ! "${file_path}" == *'/NOTICE_FILES'* ]] ||
+        [[ "${file_path}" == *'/root/'* ]]; then
       file_path=$(echo -n "${file_path}" | tail -1 \
                 | sed 's/\x1B\[[0-9;]*[JKmsu]//g');
       if [ ! -f "${file_path}" ] && [ ! "${file_path:0:1}" = '/' ]; then
@@ -193,12 +198,14 @@ function adbil()
 
         # List installed files
         if [ "${ret}" -eq 0 ]; then
-          echo '';
           echo -e " \e[1;36m${file_path}\e[0m";
         fi;
       fi;
     fi;
   done;
+
+  # Prepare public PACKAGES_RESULTS
+  export PACKAGES_RESULTS="${packages_res}";
 
   # Cleanup incomplete files
   if [ "${ret}" -ne 0 ]; then
@@ -207,9 +214,6 @@ function adbil()
     echo -e ' \e[1;31m-----------------------------------------------------------------------------\e[0m';
     rm -f "${packages_arr[@]}";
   fi;
-
-  # Prepare public PACKAGES_RESULTS
-  export PACKAGES_RESULTS="${packages_res}";
 
   # End of process
   rm -f "${tmp_file}";
@@ -300,6 +304,10 @@ function adbpf()
         filetarget=$(echo -n "${filepathtest}" | sed "s/.*\(system\/.*\)/\/\1/g");
         filepathtest=${filetarget};
       fi;
+      if [[ "${filepathtest}" == *'/root/'* ]]; then
+        filetarget=$(echo -n "${filepathtest}" | sed "s/.*\/root\/\(.*\)/\/\1/g");
+        filepathtest=${filetarget};
+      fi;
       if [[ "${filepathtest}" == "${filepath}" ]]; then
         if [[ "${filepathtest}" == *'.xml'* ]] || [[ "${filepathtest}" == *'.conf'* ]]; then
           filetarget=/system/etc/$(basename "${filepath}");
@@ -363,6 +371,9 @@ function adbside()
   # Variables
   local adb_cmd;
   local rebooted=;
+
+  # Verify adb is ready
+  adbready;
 
   # Initialize adb
   echo '';

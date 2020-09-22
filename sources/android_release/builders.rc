@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Copyright 2015-2019 Adrian DC
+# Copyright 2015-2020 Adrian DC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -266,6 +266,22 @@ function romlogs()
   echo '';
 }
 
+# === ROM Automated Preparation Helper ===
+function autoprepare()
+{
+  # Usage: autoprepare (Development automated ROM preparation)
+
+  # Prepare docs targets
+  if grep -q 'api-stubs-docs' ./frameworks/base/Android.bp 2>/dev/null; then
+    mka -j2 \
+      api-stubs-docs \
+      hiddenapi-lists-docs \
+      system-api-stubs-docs \
+      test-api-stubs-docs \
+      ;
+  fi;
+}
+
 # === ROM Automated Builder Helper ===
 function autobuild()
 {
@@ -297,6 +313,9 @@ function autobuild()
   # Prepare device and 'brunch' environment
   repos "${1}";
 
+  # Prepare build targets
+  autoprepare;
+
   # Build device for Lineage
   if type brunch >/dev/null 2>&1; then
     time_start=$(date +%s);
@@ -306,12 +325,6 @@ function autobuild()
   # Build device for AOSP
   else
     makes otapackage;
-  fi;
-
-  # When option enabled, use debuggable bootimages
-  if __shtools-builds-debug-active; then
-    bootimagedebuggable "${rom_target}" false;
-    export WITH_SU=;
   fi;
 
   # When option enabled, clean RAM after build
