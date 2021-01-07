@@ -426,8 +426,6 @@ source <(curl -Ls1 https://github.com/AdrianDC/advanced_development_shell_tools/
 >
   * **romautorelease** *&lt;device_name&gt; &lt;rom_tag&gt; [nowipe,j1/j2]* [*<b>\[Advanced&nbsp;automated&nbsp;ROM&nbsp;builder\]&nbsp;</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/android_release/builders.rc)
   * **autorelease** [*<b>\[Helper&nbsp;menu&nbsp;access&nbsp;to&nbsp;autorelease*&nbsp;functions\]&nbsp;</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/android_release/builders.rc)
-  * **romlogs** *&lt;device&gt; &lt;rom&gt; [logs_count_default_200]* [*<b>\[View&nbsp;ROMs&nbsp;build&nbsp;logs&nbsp;from&nbsp;romautorelease\]&nbsp;</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/android_release/builders.rc)
-  * **autoprepare** [*<b>\[Development&nbsp;automated&nbsp;ROM&nbsp;preparation\]&nbsp;</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/android_release/builders.rc)
   * **autobuild** *&lt;device&gt; [bool_nocleanram]* [*<b>\[Development&nbsp;automated&nbsp;ROM&nbsp;builder\]&nbsp;</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/android_release/builders.rc)
 
 ---
@@ -700,17 +698,6 @@ source <(curl -Ls1 https://github.com/AdrianDC/advanced_development_shell_tools/
 #### <span class="group_category">Git &bull; </span><span class="group_label">Gerrit Tools</span> ####
 </summary>
 
-> ### <span class="group_label">[sources/gerrit/repopicks.rc](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/gerrit/repopicks.rc)</span> ###
->
->  <div class='standalone-import'>
-  ```Shell
-source <(curl -Ls1 https://github.com/AdrianDC/advanced_development_shell_tools/raw/master/sources/gerrit/ssh.rc)
-source <(curl -Ls1 https://github.com/AdrianDC/advanced_development_shell_tools/raw/master/sources/gerrit/repopicks.rc)
-  ```
->  </div>
-  * **gerritrepopicks** *&lt;change_number&gt; [branch]* [*<b>\[Gerrit&nbsp;repopicks&nbsp;automated&nbsp;extractor\]&nbsp;</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/gerrit/repopicks.rc)
-
----
 > ### <span class="group_label">[sources/gerrit/review.rc](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/gerrit/review.rc)</span> ###
 >
 >  <div class='standalone-import'>
@@ -988,8 +975,6 @@ source <(curl -Ls1 https://github.com/AdrianDC/advanced_development_shell_tools/
   * **gitst** : *gitstat* [*<b>(Alias)</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/git/stats.rc)
   * **gitsto** : *gitremoteverify origin gitrao && gitstat origin $(git rev-parse &#8208;&#8208;abbrev-ref HEAD)* [*<b>(Alias)</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/git/stats.rc)
   * **gitstom** : *gitremoteverify origin gitrao && gitstat origin master* [*<b>(Alias)</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/git/stats.rc)
-  * **gitsta** : *gitremoteverify $(githubusername) gitraa && gitstat $(githubusername) lineage-16.0* [*<b>(Alias)</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/git/stats.rc)
-  * **gitstam** : *gitremoteverify $(githubusername) gitraa && gitstat $(githubusername) master* [*<b>(Alias)</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/git/stats.rc)
   * **gitstg** : *gitremoteverify github false && gitstat github* [*<b>(Alias)</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/git/stats.rc)
   * **gitstaosp** : *gitremoteverify aosp false && gitstat aosp master* [*<b>(Alias)</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/git/stats.rc)
 
@@ -1145,6 +1130,7 @@ source <(curl -Ls1 https://github.com/AdrianDC/advanced_development_shell_tools/
   * **isdone** : *notify-send "Process execution finished !"* [*<b>(Alias)</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/host/linux.rc)
   * **topcpu** : *top -o %CPU* [*<b>(Alias)</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/host/linux.rc)
   * **topmem** : *top -o %MEM* [*<b>(Alias)</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/host/linux.rc)
+  * **keyboardinputs** : *xev \| grep "keycode .* (.*)"* [*<b>(Alias)</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/host/linux.rc)
 
 ---
 > ### <span class="group_label">[sources/host/network.rc](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/host/network.rc)</span> ###
@@ -1248,7 +1234,6 @@ source <(curl -Ls1 https://github.com/AdrianDC/advanced_development_shell_tools/
   * **devuplboot** *&lt;device&gt;* [*<b>\[Upload&nbsp;ROM&nbsp;bootimage\]&nbsp;</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/uploads/helpers.rc)
   * **devuplrom** *&lt;device&gt; [folder_path]* [*<b>\[Upload&nbsp;ROM&nbsp;build\]&nbsp;</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/uploads/helpers.rc)
   * **pushbrom** *&lt;device_name&gt; [rom_name]* [*<b>\[Notify&nbsp;build&nbsp;success\]&nbsp;</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/uploads/helpers.rc)
-  * **makep** *&lt;parameters&gt;* [*<b>\[Use&nbsp;"makes"&nbsp;with&nbsp;Pushbullet&nbsp;notification\]&nbsp;</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/uploads/helpers.rc)
 
 ---
 > ### <span class="group_label">[sources/uploads/local.rc](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/sources/uploads/local.rc)</span> ###
@@ -1292,9 +1277,6 @@ source <(curl -Ls1 https://github.com/AdrianDC/advanced_development_shell_tools/
   * **gitpraospma** : *gerritreview https://android.googlesource.com aosp . for master* [*<b>(Alias)</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/android_rom/gerrit.rc)
   * **gitprdaosp** : *gerritreview https://android.googlesource.com aosp . drafts* [*<b>(Alias)</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/android_rom/gerrit.rc)
   * **gitprdaospma** : *gerritreview https://android.googlesource.com aosp . drafts master* [*<b>(Alias)</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/android_rom/gerrit.rc)
-  * **gitpraicp** : *gerritreview ssh://$(gerritusername)@gerrit.aicp-rom.com:29418 AICP . for n7.1* [*<b>(Alias)</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/android_rom/gerrit.rc)
-  * **gitprdaicp** : *gerritreview ssh://$(gerritusername)@gerrit.aicp-rom.com:29418 AICP . drafts n7.1* [*<b>(Alias)</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/android_rom/gerrit.rc)
-  * **gitpgaicp** : *gerritreview ssh://$(gerritusername)@gerrit.aicp-rom.com:29418 AICP . heads n7.1* [*<b>(Alias)</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/android_rom/gerrit.rc)
   * **gitprtwrp** : *gerritreview ssh://$(gerritusername)@gerrit.twrp.me:29418 . TeamWin for android-6.0* [*<b>(Alias)</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/android_rom/gerrit.rc)
   * **gitprdtwrp** : *gerritreview ssh://$(gerritusername)@gerrit.twrp.me:29418 . TeamWin drafts android-6.0* [*<b>(Alias)</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/android_rom/gerrit.rc)
 
@@ -1340,6 +1322,7 @@ source <(curl -Ls1 https://github.com/AdrianDC/advanced_development_shell_tools/
   ```
 >  </div>
   * **byobusessionscleanup** [*<b>\[Exit&nbsp;all&nbsp;unattached&nbsp;byobu&nbsp;sessions\]&nbsp;</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/byobu/helpers.rc)
+  * **byobudetachothers** [*<b>\[Detach&nbsp;other&nbsp;Byobu&nbsp;clients\]&nbsp;</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/byobu/helpers.rc)
   * **byoburenumberwindows** [*<b>\[Renumber&nbsp;all&nbsp;Byobu&nbsp;windows&nbsp;incrementally\]&nbsp;</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/byobu/helpers.rc)
 
 ---
@@ -1353,7 +1336,6 @@ source <(curl -Ls1 https://github.com/AdrianDC/advanced_development_shell_tools/
 > ### <span class="group_label">[extensions/linux/cleaners.rc](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/linux/cleaners.rc)</span> ###
 >
   * **cleanram** [*<b>\[RAM&nbsp;caches&nbsp;cleanup\]&nbsp;</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/linux/cleaners.rc)
-  * **cleanrambuild** [*<b>\[RAM&nbsp;caches&nbsp;cleanup\]&nbsp;</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/linux/cleaners.rc)
 
 ---
 > ### <span class="group_label">[extensions/linux/rpm.rc](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/extensions/linux/rpm.rc)</span> ###
@@ -1553,16 +1535,6 @@ source <(curl -Ls1 https://github.com/AdrianDC/advanced_development_shell_tools/
   ```
 >  </div>
   * [**\./cleanram.sh** *<b>\[RAM&nbsp;caches&nbsp;cleanup\]&nbsp;</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/scripts/linux/cleanram.sh)
-
----
-> ### <span class="group_label">[scripts/linux/cleanrambuild.sh](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/scripts/linux/cleanrambuild.sh)</span> ###
->
->  <div class='standalone-import'>
-  ```Shell
-source <(curl -Ls1 https://github.com/AdrianDC/advanced_development_shell_tools/raw/master/scripts/linux/cleanrambuild.sh)
-  ```
->  </div>
-  * [**\./cleanrambuild.sh** *<b>\[Build&nbsp;RAM&nbsp;processes&nbsp;cleanup\]&nbsp;</b>*](https://github.com/AdrianDC/advanced_development_shell_tools/blob/master/scripts/linux/cleanrambuild.sh)
 
 ---
 </details>

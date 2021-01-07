@@ -123,11 +123,6 @@ function romautorelease()
     outdevcl "${rom_target}";
   fi;
 
-  # When option enabled, clean RAM before build
-  if __shtools-builds-cleanram-active; then
-    cleanrambuild;
-  fi;
-
   # Compilation logs
   rom_logs_output=${rom_logs}/Build.${rom_device}.${rom_tag}.log;
 
@@ -182,11 +177,6 @@ function romautorelease()
     repodevclean;
   fi;
 
-  # When option enabled, clean RAM after build
-  if __shtools-builds-cleanram-active; then
-    cleanrambuild;
-  fi;
-
   # Restore original path
   cd "${cwd}";
 }
@@ -232,56 +222,6 @@ function autorelease()
   ${list_functions[${key}]} "${@}";
 }
 
-# === ROM Logs Viewer ===
-function romlogs()
-{
-  # Usage
-  if [ -z "${1}" ]; then
-    echo '';
-    echo ' Usage: romlogs <device> <rom> [logs_count_default_200] (View ROMs build logs from romautorelease)';
-    echo '';
-    return;
-  fi;
-
-  # Variables
-  local rom_device=${1};
-  local rom_name=${2};
-  local logs_count=${3:-200};
-  local logs_files;
-  local logs_file;
-
-  # Logs detection
-  logs_files=$(find "${ANDROID_DEV_DRIVE}/Logs" -maxdepth 1 -iname "Build.*${rom_device}*.*${rom_name}*.log");
-  logs_file=$(echo "${logs_files}" | head -n 1);
-
-  # Logs view
-  echo '';
-  if [ ! -z "${logs_files}" ]; then
-    tail -n "${logs_count}" "${logs_file}";
-    echo '';
-    echo "${logs_files}";
-  else
-    echo " No logs for ${rom_device} / ${rom_name} found...";
-  fi;
-  echo '';
-}
-
-# === ROM Automated Preparation Helper ===
-function autoprepare()
-{
-  # Usage: autoprepare (Development automated ROM preparation)
-
-  # Prepare docs targets
-  if grep -q 'api-stubs-docs' ./frameworks/base/Android.bp 2>/dev/null; then
-    mka -j2 \
-      api-stubs-docs \
-      hiddenapi-lists-docs \
-      system-api-stubs-docs \
-      test-api-stubs-docs \
-      ;
-  fi;
-}
-
 # === ROM Automated Builder Helper ===
 function autobuild()
 {
@@ -299,11 +239,6 @@ function autobuild()
   # Cleanup device outputs
   outdevcl "${1}" 'minimal';
 
-  # When option enabled, clean RAM before build
-  if [ -z "${2}" ] && __shtools-builds-cleanram-active; then
-    cleanrambuild;
-  fi;
-
   # When option enabled, use debuggable bootimages
   if __shtools-builds-debug-active; then
     bootimagedebuggable "${rom_target}" true;
@@ -312,9 +247,6 @@ function autobuild()
 
   # Prepare device and 'brunch' environment
   repos "${1}";
-
-  # Prepare build targets
-  autoprepare;
 
   # Build device for Lineage
   if type brunch >/dev/null 2>&1; then
@@ -325,11 +257,6 @@ function autobuild()
   # Build device for AOSP
   else
     makes otapackage;
-  fi;
-
-  # When option enabled, clean RAM after build
-  if [ -z "${2}" ] && __shtools-builds-cleanram-active; then
-    cleanrambuild;
   fi;
 
   # When option enabled, notify build result

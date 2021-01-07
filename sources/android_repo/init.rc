@@ -144,6 +144,8 @@ function repoinitlineage()
     15.1) branch='lineage-15.1';;
     16.0) branch='lineage-16.0';;
     17.1) branch='lineage-17.1';;
+    18.0) branch='lineage-18.0';;
+    18.1) branch='lineage-18.1';;
     *)
       branch='';
       echo '';
@@ -585,10 +587,12 @@ function repoinit()
     else
       read -r options;
     fi;
+    options=${options#,};
     echo -n "${options}" > '.repo/local_manifests/.repoinit.options';
     options="${options_prepend},${options}";
   else
     options="${options_prepend},${ANDROID_REPO_INIT_OPTIONS}";
+    options=${options#,};
     echo "${options}";
   fi;
 
