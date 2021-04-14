@@ -43,15 +43,10 @@ function romautorelease()
   local rom_name=${2};
   local rom_params=${3};
   local cwd;
-  local rom_logs;
   local rom_phone;
   local rom_target;
   local rom_tag;
   local rom_upload;
-
-  # Logs path handling
-  rom_logs=${ANDROID_DEV_DRIVE}/Logs;
-  mkdir -p "${rom_logs}";
 
   # ==========================================================
   # Access ROM root
@@ -120,11 +115,8 @@ function romautorelease()
 
   # Delete the devices relevant results
   elif [[ ! "${rom_params}" == *'nowipe'* ]]; then
-    outdevcl "${rom_target}";
+    m installclean >/dev/null || outdevcl "${rom_target}";
   fi;
-
-  # Compilation logs
-  rom_logs_output=${rom_logs}/Build.${rom_device}.${rom_tag}.log;
 
   # ==========================================================
   # Build Android
@@ -133,12 +125,12 @@ function romautorelease()
     # AOSP Release | AOSP Master | Sony SODP
     aosp|sodp)
       repos "${rom_target}";
-      makes otapackage | tee "${rom_logs_output}";;
+      makes otapackage;;
 
     # LineageOS Release | Lineage Next | LegacyXperia
     lineage|lx)
       repos "${rom_target}";
-      brunch "${rom_target}" | tee "${rom_logs_output}";;
+      brunch "${rom_target}";;
 
     # Unknown ROM
     *)
@@ -151,11 +143,6 @@ function romautorelease()
   if __shtools-builds-debug-active; then
     bootimagedebuggable "${rom_target}" false;
     export WITH_SU=;
-  fi;
-
-  # When option enabled, notify build result
-  if __shtools-host-pushbullet-active; then
-    pushbrom "${rom_device}" "${rom_tag}";
   fi;
 
   # ==========================================================
@@ -228,16 +215,13 @@ function autobuild()
   # Usage
   if [ -z "${1}" ]; then
     echo '';
-    echo ' Usage: autobuild <device> [bool_nocleanram] (Development automated ROM builder)';
+    echo ' Usage: autobuild <device> (Development automated ROM builder)';
     echo '';
     return;
   fi;
 
   # Variables
   local time_start;
-
-  # Cleanup device outputs
-  outdevcl "${1}" 'minimal';
 
   # When option enabled, use debuggable bootimages
   if __shtools-builds-debug-active; then
@@ -247,6 +231,9 @@ function autobuild()
 
   # Prepare device and 'brunch' environment
   repos "${1}";
+
+  # Cleanup device outputs
+  m installclean >/dev/null || outdevcl "${1}" 'minimal';
 
   # Build device for Lineage
   if type brunch >/dev/null 2>&1; then

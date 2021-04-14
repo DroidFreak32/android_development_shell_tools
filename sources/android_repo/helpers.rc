@@ -15,11 +15,6 @@
 # limitations under the License.
 #
 
-# === Standalone Source Helper ===
-# source <(curl -Ls1 https://github.com/AdrianDC/advanced_development_shell_tools/raw/master/sources/host/common.rc)
-# source <(curl -Ls1 https://github.com/AdrianDC/advanced_development_shell_tools/raw/master/sources/android_repo/cleaners.rc)
-# source <(curl -Ls1 https://github.com/AdrianDC/advanced_development_shell_tools/raw/master/sources/android_repo/helpers.rc)
-
 # === Android gettop ===
 function gettop()
 {
@@ -93,17 +88,29 @@ function repos()
     return;
   fi;
 
-  # Override OUT for symlinks
-  if [ -L './out' ]; then
-    export OUT_DIR;
-    OUT_DIR=$(readlink './out');
-  else
-    unset OUT_DIR;
-  fi;
-
-  # Unset Lineage variables
+  # Unset previous variables
   unset LINEAGE_BUILD;
   unset LINEAGE_DEVICES_ONLY;
+  unset LINEAGE_FIXUP_COMMON_OUT;
+  unset OUT_DIR;
+
+  # Isolate out folders
+  if [ -L ./out ] || [ ! -d ./out ]; then
+
+    # Local isolated out folder
+    if [ ! -L ./out -a ! -d ./out ] || readlink ./out | grep -q '^./'; then
+      mkdir -p "./out-${device}/";
+      rm -f ./out;
+      export OUT_DIR;
+      OUT_DIR=$(readlink -f "./out-${device}");
+
+    # Override OUT for symlinks
+    else
+      export OUT_DIR;
+      OUT_DIR=$(readlink -f './out');
+    fi
+
+  fi;
 
   # Unset CM/Lineage functions and load envsetup
   unset -f breakfast;
@@ -116,6 +123,7 @@ function repos()
 
   # Prepare device environment for LineageOS
   elif type breakfast >/dev/null 2>&1; then
+    export LINEAGE_FIXUP_COMMON_OUT=true;
     breakfast "${device}";
 
   # Prepare device environment for AOSP
